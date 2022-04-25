@@ -10,6 +10,14 @@
 </template>
 
 <script>
+const valueCheck = (v) => {
+  if (!Number(v)) {
+    alert("숫자를 입력합쉬댜");
+    return false;
+  } else {
+    return true;
+  }
+};
 export default {
   name: "App",
   data() {
@@ -24,10 +32,14 @@ export default {
   },
   methods: {
     addCount() {
-      this.$store.commit("addCount", this.value);
+      valueCheck(this.value)
+        ? this.$store.commit("addCount", this.value)
+        : null;
     },
     removeCount() {
-      this.$store.commit("removeCount", this.value);
+      valueCheck(this.value)
+        ? this.$store.commit("removeCount", this.value)
+        : null;
     },
   },
 };
