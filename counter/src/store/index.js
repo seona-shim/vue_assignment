@@ -4,11 +4,11 @@ export default createStore({
   state: { count: 0 },
   getters: {},
   mutations: {
-    addCount(state) {
-      state.count++;
+    addCount(state, value) {
+      state.count += Number(value);
     },
-    removeCount(state) {
-      state.count--;
+    removeCount(state, value) {
+      state.count -= Number(value);
     },
   },
   actions: {},

@@ -3,6 +3,7 @@
   <section>
     <h1>Counter</h1>
     <p>{{ count }}</p>
+    <input type="text" v-model="value" />
     <button @click="addCount">+</button>
     <button @click="removeCount">-</button>
   </section>
@@ -11,6 +12,11 @@
 <script>
 export default {
   name: "App",
+  data() {
+    return {
+      value: 0,
+    };
+  },
   computed: {
     count() {
       return this.$store.state.count;
@@ -18,10 +24,10 @@ export default {
   },
   methods: {
     addCount() {
-      this.$store.commit("addCount");
+      this.$store.commit("addCount", this.value);
     },
     removeCount() {
-      this.$store.commit("removeCount");
+      this.$store.commit("removeCount", this.value);
     },
   },
 };
