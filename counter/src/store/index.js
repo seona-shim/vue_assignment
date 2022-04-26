@@ -4,7 +4,7 @@ export default createStore({
   state: {
     count: 0,
     result: [],
-    resultColor: { high: "blue", middle: "black", low: "minus" },
+    resultColor: { high: "red", middle: "black", low: "blue" },
   },
   getters: {},
   mutations: {
