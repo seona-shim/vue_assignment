@@ -1,0 +1,61 @@
+<template>
+  <section class="vue-counter">
+    <h1>Counter</h1>
+    <p>{{ count }}</p>
+    <input type="text" v-model="value" />
+    <button @click="countResult('add')">+</button>
+    <button @click="countResult('remove')">-</button>
+    <button @click="countResult('random')">Random</button>
+  </section>
+</template>
+
+<script>
+const valueCheck = (v) => {
+  if (!Number(v) && Number(v) !== 0) {
+    alert("숫자를 입력합쉬댜");
+    return false;
+  } else {
+    return true;
+  }
+};
+
+const randomValue = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export default {
+  name: "VueCounter",
+  data() {
+    return {
+      value: 0,
+    };
+  },
+  computed: {
+    count() {
+      return this.$store.state.count;
+    },
+  },
+  methods: {
+    countResult(type) {
+      let mathType = type;
+      let value = this.value;
+      if (mathType == "random") {
+        mathType = ["add", "remove"][randomValue(0, 1)];
+        value =
+          mathType == "add"
+            ? randomValue(-100 - this.count, 200 - this.count)
+            : randomValue(-200 + this.count, 100 + this.count);
+      }
+      console.log(value);
+      valueCheck(value)
+        ? this.$store.commit("countResult", { type: mathType, value: value })
+        : null;
+    },
+  },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped></style>

@@ -1,47 +1,18 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <section>
-    <h1>Counter</h1>
-    <p>{{ count }}</p>
-    <input type="text" v-model="value" />
-    <button @click="addCount">+</button>
-    <button @click="removeCount">-</button>
-  </section>
+  <vue-counter></vue-counter>
+  <vue-color-peek></vue-color-peek>
+  <vue-result-box></vue-result-box>
 </template>
 
 <script>
-const valueCheck = (v) => {
-  if (!Number(v)) {
-    alert("숫자를 입력합쉬댜");
-    return false;
-  } else {
-    return true;
-  }
-};
+import VueColorPeek from "./components/VueColorPeek.vue";
+import VueCounter from "./components/VueCounter.vue";
+import VueResultBox from "./components/VueResultBox.vue";
+
 export default {
   name: "App",
-  data() {
-    return {
-      value: 0,
-    };
-  },
-  computed: {
-    count() {
-      return this.$store.state.count;
-    },
-  },
-  methods: {
-    addCount() {
-      valueCheck(this.value)
-        ? this.$store.commit("addCount", this.value)
-        : null;
-    },
-    removeCount() {
-      valueCheck(this.value)
-        ? this.$store.commit("removeCount", this.value)
-        : null;
-    },
-  },
+  components: { VueCounter, VueResultBox, VueColorPeek },
 };
 </script>
 
