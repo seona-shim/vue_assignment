@@ -48,7 +48,6 @@ export default {
             ? randomValue(-100 - this.count, 200 - this.count)
             : randomValue(-200 + this.count, 100 + this.count);
       }
-      console.log(value);
       valueCheck(value)
         ? this.$store.commit("countResult", { type: mathType, value: value })
         : null;
