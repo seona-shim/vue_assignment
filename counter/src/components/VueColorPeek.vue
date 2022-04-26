@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="color-option-box">
     <label>
       <h3>? > 100</h3>
       <color-peek-option selectType="high"></color-peek-option>
@@ -21,3 +21,16 @@ export default {
   name: "VueColorPeek",
 };
 </script>
+<style scoped>
+.color-option-box {
+  grid-column: 1/3;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 20px 6%;
+  gap: 20px;
+}
+.color-option-box label {
+}
+.color-option-box label h3 {
+}
+</style>

@@ -1,12 +1,14 @@
 <template>
-  <section class="vue-counter">
+  <div class="vue-counter">
     <h1>Counter</h1>
     <p>{{ count }}</p>
     <input type="text" v-model="value" />
-    <button @click="countResult('add')">+</button>
-    <button @click="countResult('remove')">-</button>
-    <button @click="countResult('random')">Random</button>
-  </section>
+    <div class="button-box">
+      <button @click="countResult('add')">+</button>
+      <button @click="countResult('remove')">-</button>
+      <button @click="countResult('random')">Random</button>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -57,5 +59,15 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+.button-box {
+  margin-top: 20px;
+}
+.button-box button {
+  padding: 5px 20px;
+  font-size: 18px;
+}
+.button-box button:not(:first-child) {
+  margin-left: 20px;
+}
+</style>

@@ -42,6 +42,7 @@ export default {
   --high-color: red;
   --middle-color: black;
   --low-color: blue;
+  overflow-y: auto;
 }
 .result {
   font-weight: 700;
