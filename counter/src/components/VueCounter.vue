@@ -52,6 +52,7 @@ export default {
       valueCheck(value)
         ? this.$store.commit("countResult", { type: mathType, value: value })
         : null;
+      this.value = 0;
     },
   },
 };
