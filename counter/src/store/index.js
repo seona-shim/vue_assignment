@@ -14,7 +14,7 @@ export default createStore({
         prevValue: state.count,
         nextValue: value,
         math: type == "add" ? "+" : "-",
-        id: state.result[state.result.length - 1] + 1,
+        id: state.result.length,
         result: 0,
       };
       type == "add"
@@ -22,9 +22,6 @@ export default createStore({
         : (state.count -= Number(value));
       newResult.result = state.count;
       state.result.push(newResult);
-      if (state.result[0].id == -1) {
-        state.result.shift();
-      }
     },
     updateResultColor(state, { type, value }) {
       state.resultColor[type] = value;
