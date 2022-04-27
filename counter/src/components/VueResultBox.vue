@@ -17,24 +17,21 @@
   </section>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
   name: "VueResultBox",
-  computed: {
-    resultList() {
-      return this.$store.state.result;
-    },
-    count() {
-      return this.$store.state.count;
-    },
+  computed: mapState({
+    resultList: (state) => state.count.result,
+    resultColor: (state) => state.resultColor.resultColor,
     cssColor() {
-      const color = this.$store.state.resultColor;
+      const color = this.resultColor;
       return {
         "--high-color": color.high,
         "--middle-color": color.middle,
         "--low-color": color.low,
       };
     },
-  },
+  }),
 };
 </script>
 <style scoped>

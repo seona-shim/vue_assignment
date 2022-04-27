@@ -3,7 +3,7 @@
     name="color"
     @change="changeSelect"
     class="color-selector"
-    :style="selectBackground"
+    :style="{ background: selectBackground[this.selectType] }"
   >
     <option value="blue" :selected="selectedOption('low')">blue</option>
     <option value="red" :selected="selectedOption('high')">red</option>
@@ -12,20 +12,20 @@
   </select>
 </template>
 <script>
+import { mapMutations, mapState } from "vuex";
 export default {
   name: "ColorPeekOption",
 
   props: {
     selectType: String,
   },
-  computed: {
-    selectBackground() {
-      return { background: this.$store.state.resultColor[this.selectType] };
-    },
-  },
+  computed: mapState({
+    selectBackground: (state) => state.resultColor.resultColor,
+  }),
   methods: {
+    ...mapMutations("resultColor", ["updateResultColor"]),
     changeSelect(e) {
-      this.$store.commit("updateResultColor", {
+      this.updateResultColor({
         type: this.selectType,
         value: e.target.value,
       });

@@ -4,14 +4,15 @@
     <p>{{ count }}</p>
     <input type="text" v-model="value" />
     <div class="button-box">
-      <button @click="countResult('add')">+</button>
-      <button @click="countResult('remove')">-</button>
-      <button @click="countResult('random')">Random</button>
+      <button @click="getCountResult('add')">+</button>
+      <button @click="getCountResult('remove')">-</button>
+      <button @click="getCountResult('random')">Random</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from "vuex";
 const valueCheck = (v) => {
   if (!Number(v) && Number(v) !== 0) {
     alert("숫자를 입력합쉬댜");
@@ -34,13 +35,12 @@ export default {
       value: 0,
     };
   },
-  computed: {
-    count() {
-      return this.$store.state.count;
-    },
-  },
+  computed: mapState({
+    count: (state) => state.count.count,
+  }),
   methods: {
-    countResult(type) {
+    ...mapMutations("count", ["countResult"]),
+    getCountResult(type) {
       let mathType = type;
       let value = this.value;
       if (mathType == "random") {
@@ -50,8 +50,9 @@ export default {
             ? randomValue(-100 - this.count, 200 - this.count)
             : randomValue(-200 + this.count, 100 + this.count);
       }
+      console.log("hello");
       valueCheck(value)
-        ? this.$store.commit("countResult", { type: mathType, value: value })
+        ? this.countResult({ type: mathType, value: value })
         : null;
       this.value = 0;
     },
