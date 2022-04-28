@@ -4,7 +4,6 @@ const state = () => ({
 
 const mutations = {
   updateResultColor(state, { type, value }) {
-    console.log(type, value);
     state.resultColor[type] = value;
   },
 };
