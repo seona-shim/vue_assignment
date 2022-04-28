@@ -17,11 +17,13 @@ export default {
 };
 </script>
 <script setup>
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { useStore } from "vuex";
+import { storeData } from "./common";
+
+let { count } = storeData();
 
 const store = useStore();
-const count = computed(() => store.state.count.count);
 const val = ref(0);
 const countResult = (object) => {
   store.commit("count/countResult", object);

@@ -23,11 +23,9 @@ export default {
 </script>
 <script setup>
 import { computed } from "@vue/runtime-core";
-import { useStore } from "vuex";
+import { storeData } from "./common";
 
-const store = useStore();
-const resultList = computed(() => store.state.count.result);
-const resultColor = computed(() => store.state.resultColor.resultColor);
+let { resultList, resultColor } = storeData();
 
 const cssColor = computed(() => {
   return {
