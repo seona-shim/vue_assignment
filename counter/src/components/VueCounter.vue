@@ -2,7 +2,7 @@
   <div class="vue-counter">
     <h1>Counter</h1>
     <p>{{ count }}</p>
-    <input type="text" v-model="value" />
+    <input type="text" v-model="val" />
     <div class="button-box">
       <button @click="getCountResult('add')">+</button>
       <button @click="getCountResult('remove')">-</button>
@@ -12,7 +12,22 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+export default {
+  name: "VueCounter",
+};
+</script>
+<script setup>
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+const count = computed(() => store.state.count.count);
+const val = ref(0);
+const countResult = (object) => {
+  store.commit("count/countResult", object);
+};
+
+// 숫자인지 아닌지 확인하는 함수
 const valueCheck = (v) => {
   if (!Number(v) && Number(v) !== 0) {
     alert("숫자를 입력합쉬댜");
@@ -22,41 +37,31 @@ const valueCheck = (v) => {
   }
 };
 
+// 최대, 최소값의 범위 내에서 무작위 숫자 하나를 뽑하주는 함수
 const randomValue = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export default {
-  name: "VueCounter",
-  data() {
-    return {
-      value: 0,
-    };
-  },
-  computed: mapState({
-    count: (state) => state.count.count,
-  }),
-  methods: {
-    ...mapMutations("count", ["countResult"]),
-    getCountResult(type) {
-      let mathType = type;
-      let value = this.value;
-      if (mathType == "random") {
-        mathType = ["add", "remove"][randomValue(0, 1)];
-        value =
-          mathType == "add"
-            ? randomValue(-100 - this.count, 200 - this.count)
-            : randomValue(-200 + this.count, 100 + this.count);
-      }
-      console.log("hello");
-      valueCheck(value)
-        ? this.countResult({ type: mathType, value: value })
-        : null;
-      this.value = 0;
-    },
-  },
+// 결과를 출력해주는 함수
+const getCountResult = (type) => {
+  let mathType = type;
+  let countValue = val.value;
+
+  if (mathType == "random") {
+    mathType = ["add", "remove"][randomValue(0, 1)];
+    countValue =
+      mathType == "add"
+        ? randomValue(-100 - count.value, 200 - count.value)
+        : randomValue(-200 + count.value, 100 + count.value);
+  }
+
+  valueCheck(countValue)
+    ? countResult({ type: mathType, value: countValue })
+    : null;
+
+  val.value = 0;
 };
 </script>
 

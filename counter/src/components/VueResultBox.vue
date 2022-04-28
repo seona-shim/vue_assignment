@@ -17,22 +17,25 @@
   </section>
 </template>
 <script>
-import { mapState } from "vuex";
 export default {
   name: "VueResultBox",
-  computed: mapState({
-    resultList: (state) => state.count.result,
-    resultColor: (state) => state.resultColor.resultColor,
-    cssColor() {
-      const color = this.resultColor;
-      return {
-        "--high-color": color.high,
-        "--middle-color": color.middle,
-        "--low-color": color.low,
-      };
-    },
-  }),
 };
+</script>
+<script setup>
+import { computed } from "@vue/runtime-core";
+import { useStore } from "vuex";
+
+const store = useStore();
+const resultList = computed(() => store.state.count.result);
+const resultColor = computed(() => store.state.resultColor.resultColor);
+
+const cssColor = computed(() => {
+  return {
+    "--high-color": resultColor.value.high,
+    "--middle-color": resultColor.value.middle,
+    "--low-color": resultColor.value.low,
+  };
+});
 </script>
 <style scoped>
 .result-box {
