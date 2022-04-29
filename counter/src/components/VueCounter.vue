@@ -18,16 +18,12 @@ export default {
 </script>
 <script setup>
 import { ref } from "vue";
-import { useStore } from "vuex";
-import { storeData } from "./common";
+import { storeData, storeCommit } from "./common";
 
 let { count } = storeData();
+let { countResult } = storeCommit();
 
-const store = useStore();
 const val = ref(0);
-const countResult = (object) => {
-  store.commit("count/countResult", object);
-};
 
 // 숫자인지 아닌지 확인하는 함수
 const valueCheck = (v) => {

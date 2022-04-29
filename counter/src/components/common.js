@@ -13,4 +13,20 @@ const storeData = () => {
   return toRefs(state);
 };
 
-export { storeData };
+//스토어를 왜 이케 해야만 불러 올 수 있나? 그르게...
+
+const storeCommit = () => {
+  const store = useStore();
+
+  return {
+    countResult: (object) => store.commit("count/countResult", object),
+    changeSelect: (e, type) => {
+      store.commit("resultColor/updateResultColor", {
+        type: type,
+        value: e.target.value,
+      });
+    },
+  };
+};
+
+export { storeData, storeCommit };

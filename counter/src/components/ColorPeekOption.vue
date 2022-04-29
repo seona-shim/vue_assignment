@@ -1,7 +1,7 @@
 <template>
   <select
     name="color"
-    @change="changeSelect"
+    @change="(e) => changeSelect(e, props.selectType)"
     class="color-selector"
     :style="{ background: resultColor[props.selectType] }"
   >
@@ -18,20 +18,15 @@ export default {
 </script>
 <script setup>
 import { defineProps } from "vue";
-import { useStore } from "vuex";
-import { storeData } from "./common";
+import { storeData, storeCommit } from "./common";
 
 let { resultColor } = storeData();
+let { changeSelect } = storeCommit();
+
 const props = defineProps({
   selectType: String,
 });
-const store = useStore();
-const changeSelect = (e) => {
-  store.commit("resultColor/updateResultColor", {
-    type: props.selectType,
-    value: e.target.value,
-  });
-};
+
 const selectedOption = (type) => {
   return props.selectType == type;
 };
