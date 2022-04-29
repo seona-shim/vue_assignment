@@ -29,8 +29,4 @@ export default {
   padding: 20px 6%;
   gap: 20px;
 }
-.color-option-box label {
-}
-.color-option-box label h3 {
-}
 </style>
