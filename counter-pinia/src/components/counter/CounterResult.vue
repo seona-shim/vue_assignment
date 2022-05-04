@@ -36,6 +36,7 @@ const getResultColor = (result: number) => {
 <style lang="scss" scoped>
 .result-box {
   gap: 10px;
+  overflow-y: auto;
   li {
     list-style: none;
     font-size: 18px;
