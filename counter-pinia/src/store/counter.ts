@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 
 export interface ResultItem {
-  id: number;
   math: string;
   result: string;
 }
@@ -55,10 +54,7 @@ export const useCounterStore = defineStore("counter", {
         this.count -= inputValue;
       }
       const resultCount = this.count;
-      this.result.push({
-        id: this.result.length,
-        ...getResult(prevCount, inputValue, resultCount, mathType),
-      });
+      this.result.push(getResult(prevCount, inputValue, resultCount, mathType));
     },
   },
 });
