@@ -1,12 +1,8 @@
 import { defineStore } from "pinia";
+import { Colors } from "@/types/color";
 
-export interface Color {
-  [high: string]: string;
-  middle: string;
-  low: string;
-}
 export interface Initialstate {
-  color: Color;
+  color: Colors;
 }
 
 export const useColorStore = defineStore("color", {
