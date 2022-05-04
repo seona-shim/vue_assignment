@@ -1,17 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <color-picker-box></color-picker-box>
+  <counter-box></counter-box>
+  <counter-result></counter-result>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import ColorPickerBox from "./components/colorPicker/ColorPickerBox.vue";
+import CounterBox from "./components/counter/CounterBox.vue";
+import CounterResult from "./components/counter/CounterResult.vue";
 
 export default defineComponent({
   name: "App",
-  components: {
-    HelloWorld,
-  },
+  components: { CounterBox, CounterResult, ColorPickerBox },
 });
 </script>
 
