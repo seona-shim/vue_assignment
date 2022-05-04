@@ -24,6 +24,12 @@ const getResult = (
   };
 };
 
+const getRandomValue = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 export const useCounterStore = defineStore("counter", {
   state: (): Initialstate => ({
     count: 0,
@@ -32,17 +38,26 @@ export const useCounterStore = defineStore("counter", {
   actions: {
     changeCount(type: string, value: number) {
       const prevCount = this.count;
-      if (type == "plus") {
-        this.count += value;
-      } else if (type == "minus") {
-        this.count -= value;
-      } else if (type == "random") {
-        console.log("random");
+
+      let mathType = type;
+      let inputValue = value;
+      if (type == "random") {
+        mathType = ["plus", "minus"][getRandomValue(0, 1)];
+        inputValue =
+          mathType == "plus"
+            ? getRandomValue(-100 - this.count, 200 - this.count)
+            : getRandomValue(-200 + this.count, 100 + this.count);
+      }
+
+      if (mathType == "plus") {
+        this.count += inputValue;
+      } else if (mathType == "minus") {
+        this.count -= inputValue;
       }
       const resultCount = this.count;
       this.result.push({
         id: this.result.length,
-        ...getResult(prevCount, value, resultCount, type),
+        ...getResult(prevCount, inputValue, resultCount, mathType),
       });
     },
   },
