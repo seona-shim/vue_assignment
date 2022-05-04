@@ -1,8 +1,10 @@
 <template>
-  <section>
+  <section class="counter-box">
     <img alt="Vue logo" src="../../assets/logo.png" />
-    <element-text-input></element-text-input>
-    <div>
+    <div class="input-box">
+      <element-text-input></element-text-input>
+    </div>
+    <div class="button-box">
       <element-button>+</element-button>
       <element-button>-</element-button>
       <element-button>Random</element-button>
@@ -20,4 +22,15 @@ export default defineComponent({
 });
 </script>
 <script setup></script>
-<style></style>
+<style lang="scss" scoped>
+.counter-box {
+  gap: 20px;
+}
+.input-box {
+  width: 80%;
+}
+.button-box {
+  display: flex;
+  gap: 10px;
+}
+</style>

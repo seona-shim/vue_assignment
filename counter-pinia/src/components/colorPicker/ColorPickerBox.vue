@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="color-picker-box">
     <label>
       <h3>? > 100</h3>
       <element-select></element-select>
@@ -24,4 +24,15 @@ export default defineComponent({
 });
 </script>
 <script setup></script>
-<style></style>
+<style lang="scss" scoped>
+.color-picker-box {
+  justify-content: space-between;
+  gap: 20px;
+  label {
+    flex: 1;
+  }
+  select {
+    margin-top: 10px;
+  }
+}
+</style>
