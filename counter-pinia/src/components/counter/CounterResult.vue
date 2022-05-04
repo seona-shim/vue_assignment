@@ -2,7 +2,7 @@
   <section class="result-box">
     <li v-for="(item, index) in counterStore.result" :key="index">
       {{ item.math }}
-      <span>{{ item.result }}</span>
+      <span :style="getResultColor(item.result)">{{ item.result }}</span>
     </li>
   </section>
 </template>
@@ -15,7 +15,23 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { useCounterStore } from "../../store/counter";
+import { useColorStore } from "../../store/color";
 const counterStore = useCounterStore();
+const colorStore = useColorStore();
+
+const getResultColor = (result: number) => {
+  let type;
+
+  if (result < 0) {
+    type = "low";
+  } else if (result > 100) {
+    type = "high";
+  } else {
+    type = "middle";
+  }
+
+  return { color: colorStore.color[type] };
+};
 </script>
 <style lang="scss" scoped>
 .result-box {
