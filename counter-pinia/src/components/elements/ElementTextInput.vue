@@ -1,14 +1,26 @@
 <template>
-  <input type="text" class="text-input" />
+  <input
+    type="number"
+    class="text-input"
+    :value="props.value"
+    @input="emits('update:value', $event.target.value)"
+  />
 </template>
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ElementTextInput",
 });
 </script>
-<script setup></script>
+<script setup lang="ts">
+import { defineProps, defineEmits } from "vue";
+const props = defineProps<{
+  value: number;
+}>();
+
+const emits = defineEmits(["update:value"]);
+</script>
 <style lang="scss" scoped>
 .text-input {
   width: 100%;
