@@ -1,8 +1,14 @@
 import { defineStore } from "pinia";
 
+export interface ResultItem {
+  id: number;
+  math: string;
+  result: string;
+}
+
 export interface Initialstate {
   count: number;
-  result: Array<string>;
+  result: ResultItem[];
 }
 
 const getResult = (
@@ -12,7 +18,10 @@ const getResult = (
   type: string
 ) => {
   const mathType = type == "plus" ? "+" : "-";
-  return String(prev) + mathType + String(next) + "=" + String(result);
+  return {
+    math: String(prev) + mathType + String(next) + "=",
+    result: String(result),
+  };
 };
 
 export const useCounterStore = defineStore("counter", {
@@ -31,8 +40,10 @@ export const useCounterStore = defineStore("counter", {
         console.log("random");
       }
       const resultCount = this.count;
-      this.result.push(getResult(prevCount, value, resultCount, type));
-      console.log(this.result);
+      this.result.push({
+        id: this.result.length,
+        ...getResult(prevCount, value, resultCount, type),
+      });
     },
   },
 });
