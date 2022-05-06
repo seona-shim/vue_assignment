@@ -4,10 +4,7 @@
     v-model="selectBackground"
     :style="{ background: selectBackground }"
   >
-    <option>black</option>
-    <option>green</option>
-    <option>red</option>
-    <option>blue</option>
+    <option v-for="(item, index) in colorArray" :key="index">{{ item }}</option>
   </select>
 </template>
 <script lang="ts">
@@ -19,12 +16,15 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { ref, defineProps } from "vue";
+import { ColorArray } from "@/types/color.ts";
 
 const props = defineProps<{
   value: string;
 }>();
 
 const selectBackground = ref<string>(props.value);
+
+const colorArray: ColorArray = ["black", "green", "red", "blue"];
 </script>
 <style lang="scss" scoped>
 .select-color {

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { Colors } from "@/types/color";
+import { Colors, ColorArray, ColorType } from "@/types/color";
 
 export interface Initialstate {
   color: Colors;
@@ -14,7 +14,7 @@ export const useColorStore = defineStore("color", {
     },
   }),
   actions: {
-    changeColor(type: string, color: string) {
+    changeColor(type: ColorType[0], color: ColorArray[0]) {
       this.color[type] = color;
     },
   },
