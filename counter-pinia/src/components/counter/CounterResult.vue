@@ -14,8 +14,7 @@ export default defineComponent({
 });
 </script>
 <script setup lang="ts">
-import { useCounterStore } from "../../store/counter";
-import { useColorStore } from "../../store/color";
+import { useCounterStore, useColorStore } from "@/store";
 const counterStore = useCounterStore();
 const colorStore = useColorStore();
 
