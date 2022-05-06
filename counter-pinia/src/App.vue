@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <color-picker-box></color-picker-box>
+    <options-box></options-box>
     <counter-box></counter-box>
     <counter-result></counter-result>
   </div>
@@ -8,13 +8,13 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ColorPickerBox from "./components/colorPicker/ColorPickerBox.vue";
+import OptionsBox from "./components/options/OptionsBox.vue";
 import CounterBox from "./components/counter/CounterBox.vue";
 import CounterResult from "./components/counter/CounterResult.vue";
 
 export default defineComponent({
   name: "App",
-  components: { CounterBox, CounterResult, ColorPickerBox },
+  components: { CounterBox, CounterResult, OptionsBox },
 });
 </script>
 

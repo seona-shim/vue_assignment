@@ -5,6 +5,7 @@
       <element-select
         :value="resultColors.high"
         @change="colorStore.changeColor('high', $event.target.value)"
+        :options="colorArray"
       ></element-select>
     </label>
     <label>
@@ -12,6 +13,7 @@
       <element-select
         :value="resultColors.middle"
         @change="colorStore.changeColor('middle', $event.target.value)"
+        :options="colorArray"
       ></element-select>
     </label>
     <label>
@@ -19,6 +21,7 @@
       <element-select
         :value="resultColors.low"
         @change="colorStore.changeColor('low', $event.target.value)"
+        :options="colorArray"
       ></element-select>
     </label>
   </section>
@@ -36,19 +39,28 @@ export default defineComponent({
 import { ref } from "vue";
 import { useColorStore } from "@/store";
 import { Colors } from "@/types/color";
+import { ColorArray } from "@/types/color";
+const colorArray: ColorArray = ["black", "green", "red", "blue"];
 const colorStore = useColorStore();
 
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });
 </script>
 <style lang="scss" scoped>
 .color-picker-box {
-  justify-content: space-between;
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   label {
     flex: 1;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+    align-items: center;
+    h3 {
+      text-align: left;
+    }
   }
   select {
-    margin-top: 10px;
   }
 }
 </style>
