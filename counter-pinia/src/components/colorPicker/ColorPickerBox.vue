@@ -34,8 +34,8 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { ref } from "vue";
-import { useColorStore } from "../../store/color";
-import { Colors } from "../../types/color";
+import { useColorStore } from "@/store";
+import { Colors } from "@/types/color";
 const colorStore = useColorStore();
 
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });

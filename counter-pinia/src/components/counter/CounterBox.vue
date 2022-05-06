@@ -11,7 +11,7 @@ export default defineComponent({
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useCounterStore } from "../../store/counter";
+import { useCounterStore } from "@/store";
 const counterStore = useCounterStore();
 
 const countValue = ref<number>(0);
