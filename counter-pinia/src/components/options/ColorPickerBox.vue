@@ -24,19 +24,26 @@
         :options="colorArray"
       ></element-select>
     </label>
+    <label>
+      <h3>Result Box Background</h3>
+      <element-color-input
+        v-model:value="backgroundColor"
+      ></element-color-input>
+    </label>
   </section>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import ElementSelect from "../elements/ElementSelect.vue";
+import ElementColorInput from "../elements/ElementColorInput.vue";
 
 export default defineComponent({
-  components: { ElementSelect },
+  components: { ElementSelect, ElementColorInput },
   name: "ColorPickerBox",
 });
 </script>
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useColorStore } from "@/store";
 import { Colors } from "@/types/color";
 import { ColorArray } from "@/types/color";
@@ -44,6 +51,11 @@ const colorArray: ColorArray = ["black", "green", "red", "blue"];
 const colorStore = useColorStore();
 
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });
+
+const backgroundColor = ref<string>("#ffffff");
+watch(backgroundColor, (newValue, oldValue) => {
+  colorStore.changeBackground(newValue);
+});
 </script>
 <style lang="scss" scoped>
 .color-picker-box {

@@ -1,5 +1,5 @@
 <template>
-  <section class="result-box">
+  <section class="result-box" :style="{ background: backgroundColor }">
     <li v-for="(item, index) in counterStore.result" :key="index">
       {{ item.math }}
       <span :style="getResultColor(item.result)">{{ item.result }}</span>
@@ -14,6 +14,7 @@ export default defineComponent({
 });
 </script>
 <script setup lang="ts">
+import { computed } from "vue";
 import { useCounterStore, useColorStore } from "@/store";
 const counterStore = useCounterStore();
 const colorStore = useColorStore();
@@ -31,6 +32,8 @@ const getResultColor = (result: number) => {
 
   return { color: colorStore.color[type] };
 };
+
+const backgroundColor = computed(() => colorStore.background);
 </script>
 <style lang="scss" scoped>
 .result-box {

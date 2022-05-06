@@ -25,7 +25,7 @@ const props = defineProps<{
   options: [];
 }>();
 
-const selectBackground = ref<string>(props.value);
+const selectBackground = ref<ColorArray>(props.value);
 </script>
 <style lang="scss" scoped>
 .select-color {
