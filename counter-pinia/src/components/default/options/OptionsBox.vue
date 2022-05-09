@@ -2,7 +2,7 @@
   <section class="options-box">
     <section class="select-ui">
       <label>
-        <h3>UI component</h3>
+        <h3>UI Framework</h3>
         <element-select
           :value="uiValue"
           :options="uiComponent"
@@ -26,7 +26,7 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { ref } from "vue";
-import router from "@/router";
+import useChangeView from "@/methods/useChangeView.ts";
 interface UiComponent {
   ui: "default" | "quasar";
 }
@@ -35,12 +35,7 @@ const uiValue = ref<string>("default");
 const uiComponent: UiComponent = ["default", "quasar"];
 
 const changeUI = (e) => {
-  console.log(e.target.value);
-  if (e.target.value !== "default") {
-    router.push(e.target.value);
-  } else {
-    router.push("/");
-  }
+  useChangeView(e.target.value);
 };
 </script>
 

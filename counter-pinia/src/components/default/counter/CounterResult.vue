@@ -16,21 +16,12 @@ export default defineComponent({
 <script setup lang="ts">
 import { computed } from "vue";
 import { useCounterStore, useColorStore } from "@/store";
+import { getResultType } from "@/methods/getResultType";
 const counterStore = useCounterStore();
 const colorStore = useColorStore();
 
 const getResultColor = (result: number) => {
-  let type;
-
-  if (result < 0) {
-    type = "low";
-  } else if (result > 100) {
-    type = "high";
-  } else {
-    type = "middle";
-  }
-
-  return { color: colorStore.color[type] };
+  return { color: colorStore.color[getResultType(result)] };
 };
 
 const backgroundColor = computed(() => colorStore.background);

@@ -29,6 +29,7 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100vh;
 }
 .content {
   display: grid;
@@ -36,7 +37,7 @@ export default defineComponent({
   grid-template-rows: auto 1fr;
   gap: 20px;
   padding: 20px;
-  height: 100vh;
+  height: 100%;
   > section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
