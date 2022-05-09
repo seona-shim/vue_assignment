@@ -1,5 +1,4 @@
 <template>
-  <router-link to="/">Default</router-link>
   <router-view />
 </template>
 
@@ -23,6 +22,11 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  h3 {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 700;
+  }
 }
 .content {
   display: grid;
