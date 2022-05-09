@@ -16,8 +16,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import ColorPickerBox from "./ColorPickerBox";
-import ElementSelect from "../elements/ElementSelect";
+import ColorPickerBox from "./ColorPickerBox.vue";
+import ElementSelect from "../elements/ElementSelect.vue";
 
 export default defineComponent({
   components: { ColorPickerBox, ElementSelect },

@@ -1,13 +1,19 @@
 <template>
-  <router-link to="/">Default</router-link>
-  <router-view />
+  <div class="content">
+    <options-box></options-box>
+    <counter-box></counter-box>
+    <counter-result></counter-result>
+  </div>
 </template>
-
 <script lang="ts">
 import { defineComponent } from "vue";
+import OptionsBox from "@/components/options/OptionsBox.vue";
+import CounterBox from "@/components/counter/CounterBox.vue";
+import CounterResult from "@/components/counter/CounterResult.vue";
 
 export default defineComponent({
-  name: "App",
+  name: "CounterDefault",
+  components: { CounterBox, CounterResult, OptionsBox },
 });
 </script>
 
