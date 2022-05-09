@@ -2,11 +2,20 @@
   <q-card
     class="result-box"
     :style="{
-      '--color-high': color.high,
-      '--color-middle': color.middle,
-      '--color-low': color.low,
+      '--color-high': colorStore.color.high,
+      '--color-middle': colorStore.color.middle,
+      '--color-low': colorStore.color.low,
+      background: colorStore.background,
     }"
   >
+    <q-icon name="colorize" class="cursor-pointer" size="20px">
+      <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+        <q-color
+          v-model="resultBg"
+          @update:model-value="colorStore.changeBackground"
+        />
+      </q-popup-proxy>
+    </q-icon>
     <q-item v-for="(item, index) in counterStore.result" :key="index">
       <q-item-section>
         <q-item-label caption>{{ item.math }}</q-item-label>
@@ -28,12 +37,19 @@ export default {
 import { useCounterStore, useColorStore } from "@/store";
 import { getResultType } from "@/methods/getResultType";
 const counterStore = useCounterStore();
-const color = useColorStore().color;
+const colorStore = useColorStore();
 </script>
 
-<style lange="scss" scoped>
+<style lang="scss" scoped>
 .result-box {
   overflow-y: auto;
+  position: relative;
+
+  .cursor-pointer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 }
 .result {
   font-weight: 700;
