@@ -7,9 +7,9 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import OptionsBox from "@/components/options/OptionsBox.vue";
-import CounterBox from "@/components/counter/CounterBox.vue";
-import CounterResult from "@/components/counter/CounterResult.vue";
+import OptionsBox from "@/components/default/options/OptionsBox.vue";
+import CounterBox from "@/components/default/counter/CounterBox.vue";
+import CounterResult from "@/components/default/counter/CounterResult.vue";
 
 export default defineComponent({
   name: "CounterDefault",

@@ -26,6 +26,7 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { ref } from "vue";
+import router from "@/router";
 interface UiComponent {
   ui: "default" | "quasar";
 }
@@ -33,8 +34,13 @@ const uiValue = ref<string>("default");
 
 const uiComponent: UiComponent = ["default", "quasar"];
 
-const changeUI = () => {
-  console.log("change ui!");
+const changeUI = (e) => {
+  console.log(e.target.value);
+  if (e.target.value !== "default") {
+    router.push(e.target.value);
+  } else {
+    router.push("/");
+  }
 };
 </script>
 

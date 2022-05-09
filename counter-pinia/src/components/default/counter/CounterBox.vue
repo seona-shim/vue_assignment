@@ -22,7 +22,7 @@ const changeCount = (type: string) => {
 </script>
 <template>
   <section class="counter-box">
-    <img alt="Vue logo" src="../../assets/logo.png" />
+    <img alt="Vue logo" src="@/assets/logo.png" />
     {{ counterStore.count }}
     <div class="input-box">
       <element-text-input
