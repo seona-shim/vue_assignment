@@ -27,12 +27,9 @@ export default defineComponent({
 <script setup lang="ts">
 import { ref } from "vue";
 import useChangeView from "@/methods/useChangeView.ts";
-interface UiComponent {
-  ui: "default" | "quasar";
-}
-const uiValue = ref<string>("default");
+import { uiComponent } from "@/router/routePath.ts";
 
-const uiComponent: UiComponent = ["default", "quasar"];
+const uiValue = ref<string>("default");
 
 const changeUI = (e) => {
   useChangeView(e.target.value);

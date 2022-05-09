@@ -4,7 +4,7 @@
       <q-select
         outlined
         v-model="uiOption"
-        :options="uiOptions"
+        :options="uiComponent"
         @update:model-value="useChangeView"
         label="UI Framework"
       />
@@ -28,7 +28,8 @@ export default {
 <script setup lang="ts">
 import { ref } from "vue";
 import useChangeView from "@/methods/useChangeView.ts";
-const uiOptions = ["default", "quasar"];
+import { uiComponent } from "@/router/routePath.ts";
+
 const uiOption = ref("quasar");
 </script>
 <style lang="scss" scoped>
