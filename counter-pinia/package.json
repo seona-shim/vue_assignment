@@ -10,6 +10,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.6.1",
     "@heroicons/vue": "^1.0.6",
+    "@ionic/vue": "^6.1.4",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.8.3",
     "pinia": "^2.0.13",

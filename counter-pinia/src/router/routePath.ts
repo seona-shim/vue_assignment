@@ -1,1 +1,1 @@
-export const uiComponent = ["default", "quasar", "tailwind"];
+export const uiComponent = ["default", "quasar", "tailwind", "ionic"];
