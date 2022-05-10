@@ -1,5 +1,7 @@
 <template>
-  <main class="grid h-screen grid-cols-2 grid-rows-[auto_1fr] gap-[20px]">
+  <main
+    class="grid h-screen grid-cols-2 grid-rows-[auto_1fr] gap-[20px] p-[20px]"
+  >
     <option-box />
     <counter-box />
     <result-box />
