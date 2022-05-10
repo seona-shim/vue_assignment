@@ -62,7 +62,7 @@ import { Colors, ColorArray } from "@/types/color";
 import useChangeView from "@/methods/useChangeView.ts";
 import { uiComponent } from "@/router/routePath.ts";
 
-const uiValue = ref<string>("default");
+const uiValue = ref<string>("tailwind");
 
 const changeUI = (e) => {
   useChangeView(e.target.value);
