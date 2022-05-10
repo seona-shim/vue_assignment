@@ -1,6 +1,7 @@
 <template>
   <section
     class="flex flex-col flex-nowrap items-center justify-center gap-[10px] overflow-auto shadow-lg"
+    :style="{ background: backgroundColor }"
   >
     <p v-for="(item, index) in counterStore.result" :key="index">
       {{ item.math }}
