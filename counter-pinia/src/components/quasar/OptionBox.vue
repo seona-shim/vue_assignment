@@ -17,7 +17,7 @@
   </q-card>
 </template>
 <script lang="ts">
-import ColorSelect from "./ColorSelect";
+import ColorSelect from "./ColorSelect.vue";
 export default {
   name: "OptionBox",
   components: {
