@@ -30,5 +30,3 @@ const getResultColor = (result: number) => {
 const backgroundColor = computed(() => colorStore.background);
 </script>
 <style scoped src="@/styles/tailwind/index.css" />
-
-<style lang="scss" scoped></style>

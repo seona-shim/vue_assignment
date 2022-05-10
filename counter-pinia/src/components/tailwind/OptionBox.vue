@@ -79,5 +79,3 @@ watch(backgroundColor, (newValue, oldValue) => {
 });
 </script>
 <style scoped src="@/styles/tailwind/index.css" />
-
-<style lang="scss" scoped></style>

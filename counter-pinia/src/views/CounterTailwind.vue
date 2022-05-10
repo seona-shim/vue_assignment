@@ -17,8 +17,4 @@ export default {
   components: { OptionBox, CounterBox, ResultBox },
 };
 </script>
-<script setup lang="ts"></script>
-
 <style scoped src="@/styles/tailwind/index.css" />
-
-<style lang="scss" scoped></style>
