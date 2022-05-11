@@ -18,7 +18,31 @@
         </ion-item>
         <ion-list></ion-list>
       </ion-card>
-      <ion-card class="counter-box">counter</ion-card>
+      <ion-card class="counter-box">
+        <img alt="Vue logo" src="@/assets/logo.png" />
+        <p>{{ counterStore.count }}</p>
+        <ion-input type="number" v-model="countValue" class="number-input" />
+        <div class="button-box">
+          <ion-button
+            shape="round"
+            class="button plus"
+            @click="changeCount('plus')"
+            >+</ion-button
+          >
+          <ion-button
+            shape="round"
+            class="button minus"
+            @click="changeCount('minus')"
+            >-</ion-button
+          >
+          <ion-button
+            shape="round"
+            class="button random"
+            @click="changeCount('random')"
+            >Random</ion-button
+          >
+        </div>
+      </ion-card>
       <ion-card class="result-box">result</ion-card>
     </main>
   </ion-content>
@@ -31,6 +55,8 @@ import {
   IonItem,
   IonList,
   IonSelectOption,
+  IonButton,
+  IonInput,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 
@@ -43,32 +69,42 @@ export default defineComponent({
     IonItem,
     IonList,
     IonSelectOption,
+    IonButton,
+    IonInput,
   },
 });
 </script>
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { useColorStore } from "@/store";
+import { useCounterStore, useColorStore } from "@/store";
 import { Colors, ColorArray } from "@/types/color";
 import useChangeView from "@/methods/useChangeView.ts";
 import { uiComponent } from "@/router/routePath.ts";
 
+// framework option
 const uiValue = ref<string>("ionic");
 
 const changeUI = (e) => {
   useChangeView(e.target.value);
 };
 
+// result color option
 const colorArray: ColorArray = ["black", "green", "red", "blue"];
 const colorStore = useColorStore();
-
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });
 
 const backgroundColor = ref<string>("#ffffff");
 watch(backgroundColor, (newValue, oldValue) => {
   colorStore.changeBackground(newValue);
 });
+
+// counter
+const counterStore = useCounterStore();
+const countValue = ref<number>(0);
+const changeCount = (type: string) => {
+  counterStore.changeCount(type, Number(countValue.value));
+};
 </script>
 
 <style lang="scss" scoped>
@@ -84,6 +120,36 @@ watch(backgroundColor, (newValue, oldValue) => {
     grid-column: 1/3;
   }
   .counter-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    gap: 20px;
+    .number-input {
+      max-height: 50px;
+      background: none;
+      border: 1px solid lightgray;
+      input {
+        height: 100%;
+      }
+    }
+    .button-box {
+      display: flex;
+      gap: 10px;
+      .button.plus {
+        --background: lightpink;
+        --color: deeppink;
+      }
+      .button.minus {
+        --background: skyblue;
+        --color: blue;
+      }
+      .button.random {
+        --background: plum;
+        --color: purple;
+      }
+    }
   }
   .result-box {
   }
