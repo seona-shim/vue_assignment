@@ -16,7 +16,6 @@
             >
           </ion-select>
         </ion-item>
-        <ion-list></ion-list>
       </ion-card>
       <ion-card class="counter-box">
         <img alt="Vue logo" src="@/assets/logo.png" />
@@ -43,7 +42,17 @@
           >
         </div>
       </ion-card>
-      <ion-card class="result-box">result</ion-card>
+      <ion-card
+        class="result-box"
+        :style="{ '--background': resultBackgroundColor }"
+      >
+        <ion-list>
+          <ion-item v-for="(item, index) in counterStore.result" :key="index">
+            {{ item.math }}
+            <span :style="getResultColor(item.result)">{{ item.result }}</span>
+          </ion-item>
+        </ion-list></ion-card
+      >
     </main>
   </ion-content>
 </template>
@@ -76,10 +85,12 @@ export default defineComponent({
 </script>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref, watch, computed } from "vue";
 import { useCounterStore, useColorStore } from "@/store";
 import { Colors, ColorArray } from "@/types/color";
 import useChangeView from "@/methods/useChangeView.ts";
+import { getResultType } from "@/methods/getResultType";
+
 import { uiComponent } from "@/router/routePath.ts";
 
 // framework option
@@ -105,6 +116,13 @@ const countValue = ref<number>(0);
 const changeCount = (type: string) => {
   counterStore.changeCount(type, Number(countValue.value));
 };
+
+//result
+const getResultColor = (result: number) => {
+  return { color: colorStore.color[getResultType(result)] };
+};
+
+const resultBackgroundColor = computed(() => colorStore.background);
 </script>
 
 <style lang="scss" scoped>
@@ -152,6 +170,7 @@ const changeCount = (type: string) => {
     }
   }
   .result-box {
+    overflow-y: auto;
   }
 }
 </style>
