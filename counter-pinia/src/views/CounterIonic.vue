@@ -3,6 +3,7 @@
     <main class="contents">
       <ion-card class="option-box">
         <ion-item>
+          <ion-label>UI Framework</ion-label>
           <ion-select
             placeholder="ionic"
             interface="action-sheet"
@@ -16,6 +17,68 @@
             >
           </ion-select>
         </ion-item>
+        <ion-list>
+          <ion-item>
+            <ion-label>? > 100</ion-label>
+
+            <ion-select
+              placeholder="red"
+              interface="action-sheet"
+              v-model="resultColors.high"
+              :style="{ color: resultColors.high }"
+              @ionChange="(e) => colorStore.changeColor('high', e.target.value)"
+            >
+              <ion-select-option
+                v-for="(item, index) in colorArray"
+                :key="index"
+                :value="item"
+                >{{ item }}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>0 {{ "<=" }} ? {{ "<=" }} 100</ion-label>
+
+            <ion-select
+              placeholder="red"
+              interface="action-sheet"
+              v-model="resultColors.middle"
+              :style="{ color: resultColors.middle }"
+              @ionChange="
+                (e) => colorStore.changeColor('middle', e.target.value)
+              "
+            >
+              <ion-select-option
+                v-for="(item, index) in colorArray"
+                :key="index"
+                :value="item"
+                >{{ item }}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>? {{ "<" }} 0</ion-label>
+
+            <ion-select
+              placeholder="red"
+              interface="action-sheet"
+              v-model="resultColors.low"
+              :style="{ color: resultColors.low }"
+              @ionChange="(e) => colorStore.changeColor('low', e.target.value)"
+            >
+              <ion-select-option
+                v-for="(item, index) in colorArray"
+                :key="index"
+                :value="item"
+                >{{ item }}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Result box background</ion-label>
+            <input type="color" v-model="backgroundColor" />
+          </ion-item>
+        </ion-list>
       </ion-card>
       <ion-card class="counter-box">
         <img alt="Vue logo" src="@/assets/logo.png" />
@@ -46,8 +109,12 @@
         class="result-box"
         :style="{ '--background': resultBackgroundColor }"
       >
-        <ion-list>
-          <ion-item v-for="(item, index) in counterStore.result" :key="index">
+        <ion-list :style="{ background: resultBackgroundColor }">
+          <ion-item
+            v-for="(item, index) in counterStore.result"
+            :key="index"
+            :style="{ '--background': resultBackgroundColor }"
+          >
             {{ item.math }}
             <span :style="getResultColor(item.result)">{{ item.result }}</span>
           </ion-item>
@@ -66,6 +133,7 @@ import {
   IonSelectOption,
   IonButton,
   IonInput,
+  IonLabel,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 
@@ -80,6 +148,7 @@ export default defineComponent({
     IonSelectOption,
     IonButton,
     IonInput,
+    IonLabel,
   },
 });
 </script>
@@ -94,8 +163,6 @@ import { getResultType } from "@/methods/getResultType";
 import { uiComponent } from "@/router/routePath.ts";
 
 // framework option
-const uiValue = ref<string>("ionic");
-
 const changeUI = (e) => {
   useChangeView(e.target.value);
 };
@@ -136,6 +203,11 @@ const resultBackgroundColor = computed(() => colorStore.background);
   box-sizing: border-box;
   .option-box {
     grid-column: 1/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 20px 50px;
+    align-items: center;
   }
   .counter-box {
     display: flex;
