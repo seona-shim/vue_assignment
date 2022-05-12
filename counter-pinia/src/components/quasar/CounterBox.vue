@@ -10,9 +10,10 @@
   </q-card>
 </template>
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   name: "CounterBox",
-};
+});
 </script>
 <script setup lang="ts">
 import { ref } from "vue";

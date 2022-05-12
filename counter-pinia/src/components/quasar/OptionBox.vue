@@ -17,13 +17,14 @@
   </q-card>
 </template>
 <script lang="ts">
-import ColorSelect from "./ColorSelect.vue";
-export default {
+import { defineComponent } from "vue";
+import ColorSelect from "./ColorSelect";
+export default defineComponent({
   name: "OptionBox",
   components: {
     ColorSelect,
   },
-};
+});
 </script>
 <script setup lang="ts">
 import { ref } from "vue";

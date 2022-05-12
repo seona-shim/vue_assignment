@@ -31,10 +31,11 @@
   </section>
 </template>
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   name: "CounterBox",
   components: {},
-};
+});
 </script>
 <script lang="ts" setup>
 import { ref } from "vue";

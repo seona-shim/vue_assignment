@@ -9,12 +9,13 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
 import OptionBox from "@/components/tailwind/OptionBox.vue";
 import ResultBox from "@/components/tailwind/ResultBox.vue";
 import CounterBox from "@/components/tailwind/CounterBox.vue";
-export default {
+export default defineComponent({
   name: "CounterQuasar",
   components: { OptionBox, CounterBox, ResultBox },
-};
+});
 </script>
 <style scoped src="@/styles/tailwind/index.css" />

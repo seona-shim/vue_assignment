@@ -47,20 +47,21 @@
   </section>
 </template>
 <script lang="ts">
+import { defineComponent } from "vue";
 import SelectColor from "./elements/SelectColor.vue";
-export default {
+export default defineComponent({
   name: "OptionBox",
   components: {
     SelectColor,
   },
-};
+});
 </script>
 <script lang="ts" setup>
 import { ref, watch } from "vue";
 import { useColorStore } from "@/store";
 import { Colors, ColorArray } from "@/types/color";
-import useChangeView from "@/methods/useChangeView.ts";
-import { uiComponent } from "@/router/routePath.ts";
+import useChangeView from "@/methods/useChangeView";
+import { uiComponent } from "@/router/routePath";
 
 const uiValue = ref<string>("tailwind");
 

@@ -7,13 +7,14 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
 import OptionBox from "@/components/quasar/OptionBox.vue";
 import ResultBox from "@/components/quasar/ResultBox.vue";
 import CounterBox from "@/components/quasar/CounterBox.vue";
-export default {
+export default defineComponent({
   name: "CounterQuasar",
   components: { OptionBox, CounterBox, ResultBox },
-};
+});
 </script>
 <script setup lang="ts"></script>
 
