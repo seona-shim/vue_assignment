@@ -1,13 +1,7 @@
-export interface ColorArray {
-  [index: number]: "black" | "red" | "green" | "blue";
-}
+export type ColorArray = "black" | "red" | "green" | "blue";
 
-export interface ColorType {
-  0: "high" | "middle" | "low";
-}
+export type ColorType = "high" | "middle" | "low";
 
-export interface Colors {
-  [high: string]: ColorArray[0];
-  middle: ColorArray[0];
-  low: ColorArray[0];
+export type Colors = {
+  [key in ColorType]: ColorArray
 }

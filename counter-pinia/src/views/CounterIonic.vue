@@ -1,5 +1,6 @@
 <template>
   <ion-content>
+    <div>컴포넌트로 분리하기</div>
     <main class="contents">
       <ion-card class="option-box">
         <ion-item>
@@ -157,10 +158,10 @@ export default defineComponent({
 import { ref, watch, computed } from "vue";
 import { useCounterStore, useColorStore } from "@/store";
 import { Colors, ColorArray } from "@/types/color";
-import useChangeView from "@/methods/useChangeView.ts";
+import useChangeView from "@/methods/useChangeView";
 import { getResultType } from "@/methods/getResultType";
 
-import { uiComponent } from "@/router/routePath.ts";
+import { uiComponent } from "@/router/routePath";
 
 // framework option
 const changeUI = (e) => {
@@ -168,9 +169,10 @@ const changeUI = (e) => {
 };
 
 // result color option
-const colorArray: ColorArray = ["black", "green", "red", "blue"];
+const colorArray: ColorArray[] = ["black", "green", "red", "blue"];
 const colorStore = useColorStore();
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });
+
 
 const backgroundColor = ref<string>("#ffffff");
 watch(backgroundColor, (newValue, oldValue) => {

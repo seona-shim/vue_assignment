@@ -26,13 +26,13 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { ref } from "vue";
-import useChangeView from "@/methods/useChangeView.ts";
-import { uiComponent } from "@/router/routePath.ts";
+import useChangeView from "@/methods/useChangeView";
+import { uiComponent } from "@/router/routePath";
 
 const uiValue = ref<string>("default");
 
-const changeUI = (e) => {
-  useChangeView(e.target.value);
+const changeUI = (e:Event) => {
+  useChangeView((e.target as HTMLSelectElement).value);
 };
 </script>
 

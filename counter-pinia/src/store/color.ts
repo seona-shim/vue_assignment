@@ -16,7 +16,7 @@ export const useColorStore = defineStore("color", {
     background: "#ffffff",
   }),
   actions: {
-    changeColor(type: ColorType[0], color: ColorArray[0]) {
+    changeColor(type: ColorType, color: ColorArray) {
       this.color[type] = color;
     },
     changeBackground(color: string) {

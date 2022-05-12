@@ -1,0 +1,1 @@
+export type CounterOperator = "plus" | "minus" | "random"

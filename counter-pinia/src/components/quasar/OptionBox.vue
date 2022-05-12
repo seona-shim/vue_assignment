@@ -27,8 +27,8 @@ export default {
 </script>
 <script setup lang="ts">
 import { ref } from "vue";
-import useChangeView from "@/methods/useChangeView.ts";
-import { uiComponent } from "@/router/routePath.ts";
+import useChangeView from "@/methods/useChangeView";
+import { uiComponent } from "@/router/routePath";
 
 const uiOption = ref("quasar");
 </script>

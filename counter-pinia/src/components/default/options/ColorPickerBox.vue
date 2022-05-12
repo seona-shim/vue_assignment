@@ -1,5 +1,7 @@
 <template>
   <section class="color-picker-box">
+
+    <div>여기는 컴포넌트로 만들면 좋겠음</div>
     <label>
       <h3>? > 100</h3>
       <element-select
@@ -8,6 +10,7 @@
         :options="colorArray"
       ></element-select>
     </label>
+
     <label>
       <h3>0 {{ "<=" }} ? {{ "<=" }} 100</h3>
       <element-select
@@ -16,6 +19,7 @@
         :options="colorArray"
       ></element-select>
     </label>
+
     <label>
       <h3>? {{ "<" }} 0</h3>
       <element-select
@@ -47,7 +51,7 @@ import { ref, watch } from "vue";
 import { useColorStore } from "@/store";
 import { Colors } from "@/types/color";
 import { ColorArray } from "@/types/color";
-const colorArray: ColorArray = ["black", "green", "red", "blue"];
+const colorArray: ColorArray[] = ["black", "green", "red", "blue"];
 const colorStore = useColorStore();
 
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });

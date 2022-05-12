@@ -18,10 +18,10 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { ref, defineProps } from "vue";
-import { ColorArray } from "@/types/color.ts";
+import { ColorArray } from "@/types/color";
 
 const props = defineProps<{
-  value: string;
+  value: ColorArray;
   options: [];
 }>();
 
