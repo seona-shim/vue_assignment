@@ -20,6 +20,9 @@ export default defineComponent({
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 100%;
+  overflow: hidden;
   gap: 20px;
+  padding: 0 20px 20px;
 }
 </style>

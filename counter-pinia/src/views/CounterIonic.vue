@@ -40,5 +40,9 @@ export default defineComponent({
     padding: 20px 50px;
     align-items: center;
   }
+  ion-card {
+    border: 2px solid lightblue;
+    border-radius: 3%;
+  }
 }
 </style>

@@ -51,7 +51,8 @@ const resultBg = ref<string>("#ffffff");
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  border: 2px solid lightblue;
+  border-radius: 3%;
   .cursor-pointer {
     position: absolute;
     top: 20px;

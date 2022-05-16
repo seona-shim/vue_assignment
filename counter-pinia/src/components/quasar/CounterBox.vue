@@ -30,6 +30,8 @@ const changeCount = (type: string) => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 2px solid lightblue;
+  border-radius: 3%;
   img {
     width: 200px;
     height: 200px;
