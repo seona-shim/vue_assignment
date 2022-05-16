@@ -28,6 +28,10 @@ const backgroundColor = computed(() => colorStore.background);
 </script>
 <style lang="scss" scoped>
 .result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
   overflow-y: auto;
   li {

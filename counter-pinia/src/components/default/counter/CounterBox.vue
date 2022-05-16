@@ -39,6 +39,10 @@ const changeCount = (type: string) => {
 
 <style lang="scss" scoped>
 .counter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 .input-box {
