@@ -1,11 +1,13 @@
 <template>
-  <option-box></option-box>
-  <router-view />
+  <main class="app-content">
+    <option-box></option-box>
+    <router-view />
+  </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import OptionBox from "@/components/OptionBox.vue";
+import OptionBox from "@/components/option/OptionBox.vue";
 
 export default defineComponent({
   name: "App",
@@ -31,36 +33,13 @@ export default defineComponent({
     font-weight: 700;
   }
 }
-.content {
+</style>
+<style lang="scss" scoped>
+.app-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr;
-  gap: 20px;
-  padding: 20px;
+  width: 100%;
   height: 100vh;
-  > section {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:nth-child(1) {
-      grid-column: 1/3;
-      grid-row: 1/2;
-    }
-    &:nth-child(2) {
-      grid-column: 1/2;
-      grid-row: 2/3;
-      flex-direction: column;
-    }
-    &:nth-child(3) {
-      grid-column: 2/3;
-      grid-row: 2/3;
-      flex-direction: column;
-    }
-  }
+  gap: 20px;
 }
 </style>
