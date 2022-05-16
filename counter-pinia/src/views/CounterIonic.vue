@@ -1,87 +1,6 @@
 <template>
   <ion-content>
     <main class="contents">
-      <ion-card class="option-box">
-        <ion-item>
-          <ion-label>UI Framework</ion-label>
-          <ion-select
-            placeholder="ionic"
-            interface="action-sheet"
-            @ionChange="changeUI"
-          >
-            <ion-select-option
-              v-for="(item, index) in uiComponent"
-              :key="index"
-              :value="item"
-              >{{ item }}</ion-select-option
-            >
-          </ion-select>
-        </ion-item>
-        <ion-list>
-          <ion-item>
-            <ion-label>? > 100</ion-label>
-
-            <ion-select
-              placeholder="red"
-              interface="action-sheet"
-              v-model="resultColors.high"
-              :style="{ color: resultColors.high }"
-              @ionChange="
-                () => colorStore.changeColor('high', resultColors.high)
-              "
-            >
-              <ion-select-option
-                v-for="(item, index) in colorArray"
-                :key="index"
-                :value="item"
-                >{{ item }}</ion-select-option
-              >
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>0 {{ "<=" }} ? {{ "<=" }} 100</ion-label>
-
-            <ion-select
-              placeholder="red"
-              interface="action-sheet"
-              v-model="resultColors.middle"
-              :style="{ color: resultColors.middle }"
-              @ionChange="
-                () => colorStore.changeColor('middle', resultColors.middle)
-              "
-            >
-              <ion-select-option
-                v-for="(item, index) in colorArray"
-                :key="index"
-                :value="item"
-                >{{ item }}</ion-select-option
-              >
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>? {{ "<" }} 0</ion-label>
-
-            <ion-select
-              placeholder="red"
-              interface="action-sheet"
-              v-model="resultColors.low"
-              :style="{ color: resultColors.low }"
-              @ionChange="() => colorStore.changeColor('low', resultColors.low)"
-            >
-              <ion-select-option
-                v-for="(item, index) in colorArray"
-                :key="index"
-                :value="item"
-                >{{ item }}</ion-select-option
-              >
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Result box background</ion-label>
-            <input type="color" v-model="backgroundColor" />
-          </ion-item>
-        </ion-list>
-      </ion-card>
       <ion-card class="counter-box">
         <img alt="Vue logo" src="@/assets/logo.png" />
         <p>{{ counterStore.count }}</p>
@@ -144,13 +63,10 @@ export default defineComponent({
   components: {
     IonContent,
     IonCard,
-    IonSelect,
     IonItem,
     IonList,
-    IonSelectOption,
     IonButton,
     IonInput,
-    IonLabel,
   },
 });
 </script>
