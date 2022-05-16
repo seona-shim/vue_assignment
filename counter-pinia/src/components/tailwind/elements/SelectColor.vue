@@ -15,11 +15,11 @@ export default defineComponent({
 
 <script setup lang="ts">
 import { ref, defineProps } from "vue";
-import { ColorArray } from "@/types/color.ts";
+import { ColorArray } from "@/types/color";
 
 const props = defineProps<{
-  value: string;
-  options: [];
+  value: ColorArray;
+  options: ColorArray[];
 }>();
 
 const selectBackground = ref<ColorArray>(props.value);

@@ -3,7 +3,7 @@
     type="number"
     class="text-input"
     :value="props.value"
-    @input="emits('update:value', $event.target.value)"
+    @input="emits('update:value', ($event.target as HTMLInputElement).value)"
   />
 </template>
 <script lang="ts">

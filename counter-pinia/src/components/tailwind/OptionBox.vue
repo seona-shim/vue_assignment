@@ -3,12 +3,15 @@
     <section class="px-[50px] py-[20px]">
       <label class="flex flex-col items-baseline gap-[10px]">
         <h3>UI Framework</h3>
-        <SelectColor
+        <select
           :value="uiValue"
-          :options="uiComponent"
           @change="changeUI"
           class="h-[40px] w-full border-[1px] border-gray-300 bg-gray-50"
-        ></SelectColor>
+        >
+          <option v-for="(item, index) in uiComponent" :key="index">
+            {{ item }}
+          </option>
+        </select>
       </label>
     </section>
     <section class="px-[50px] py-[20px]">
@@ -16,7 +19,7 @@
         <h3>? > 100</h3>
         <SelectColor
           :value="resultColors.high"
-          @change="colorStore.changeColor('high', $event.target.value)"
+          @change="colorStore.changeColor('high', resultColors.high)"
           :options="colorArray"
           class="text-white"
         ></SelectColor>
@@ -25,7 +28,7 @@
         <h3>0 {{ "<=" }} ? {{ "<=" }} 100</h3>
         <SelectColor
           :value="resultColors.middle"
-          @change="colorStore.changeColor('middle', $event.target.value)"
+          @change="colorStore.changeColor('middle', resultColors.middle)"
           :options="colorArray"
           class="text-white"
         ></SelectColor>
@@ -34,7 +37,7 @@
         <h3>? {{ "<" }} 0</h3>
         <SelectColor
           :value="resultColors.low"
-          @change="colorStore.changeColor('low', $event.target.value)"
+          @change="colorStore.changeColor('low', resultColors.low)"
           :options="colorArray"
           class="text-white"
         ></SelectColor>
@@ -61,15 +64,15 @@ import { ref, watch } from "vue";
 import { useColorStore } from "@/store";
 import { Colors, ColorArray } from "@/types/color";
 import useChangeView from "@/methods/useChangeView";
-import { uiComponent } from "@/router/routePath";
+import { Ui, uiComponent } from "@/router/routePath";
 
-const uiValue = ref<string>("tailwind");
+const uiValue = ref<Ui>("tailwind");
 
-const changeUI = (e) => {
-  useChangeView(e.target.value);
+const changeUI = (e: Event) => {
+  useChangeView((e.target as HTMLInputElement).value);
 };
 
-const colorArray: ColorArray = ["black", "green", "red", "blue"];
+const colorArray: ColorArray[] = ["black", "green", "red", "blue"];
 const colorStore = useColorStore();
 
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });

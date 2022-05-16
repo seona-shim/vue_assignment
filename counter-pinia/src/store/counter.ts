@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export interface ResultItem {
   math: string;
-  result: string;
+  result: number;
 }
 
 export interface Initialstate {
@@ -19,7 +19,7 @@ const getResult = (
   const mathType = type == "plus" ? "+" : "-";
   return {
     math: String(prev) + mathType + String(next) + "=",
-    result: String(result),
+    result: result,
   };
 };
 
@@ -53,7 +53,7 @@ export const useCounterStore = defineStore("counter", {
       } else if (mathType == "minus") {
         this.count -= inputValue;
       }
-      const resultCount = this.count;
+      const resultCount: number = this.count;
       this.result.push(getResult(prevCount, inputValue, resultCount, mathType));
     },
   },

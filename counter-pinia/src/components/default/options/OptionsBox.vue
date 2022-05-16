@@ -3,11 +3,14 @@
     <section class="select-ui">
       <label>
         <h3>UI Framework</h3>
-        <element-select
-          :value="uiValue"
-          :options="uiComponent"
-          @change="changeUI"
-        ></element-select>
+        <select
+          v-model="uiValue"
+          @change="changeUI(($event.target as HTMLInputElement).value)"
+        >
+          <option v-for="(item, index) in uiComponent" :key="index">
+            {{ item }}
+          </option>
+        </select>
       </label>
     </section>
     <color-picker-box></color-picker-box>
@@ -17,22 +20,21 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import ColorPickerBox from "./ColorPickerBox.vue";
-import ElementSelect from "../elements/ElementSelect.vue";
 
 export default defineComponent({
-  components: { ColorPickerBox, ElementSelect },
+  components: { ColorPickerBox },
   name: "OptionsBox",
 });
 </script>
 <script setup lang="ts">
 import { ref } from "vue";
-import useChangeView from "@/methods/useChangeView.ts";
-import { uiComponent } from "@/router/routePath.ts";
+import useChangeView from "@/methods/useChangeView";
+import { Ui, uiComponent } from "@/router/routePath";
 
-const uiValue = ref<string>("default");
+const uiValue = ref<Ui>("default");
 
-const changeUI = (e) => {
-  useChangeView(e.target.value);
+const changeUI = (value: string) => {
+  useChangeView(value);
 };
 </script>
 

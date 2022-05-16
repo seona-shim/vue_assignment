@@ -19,18 +19,16 @@ export default defineComponent({
 <script setup lang="ts">
 import { ref, defineProps } from "vue";
 import { useColorStore } from "@/store";
+import { ColorArray, Colors, ColorType } from "@/types/color";
 const props = defineProps<{
-  type: string;
+  type: ColorType;
   title: string;
 }>();
-const resultColors = ref({ high: "red", middle: "black", low: "blue" });
-const colorOptions = ["red", "green", "blue", "black"];
+const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });
+const colorOptions: ColorArray[] = ["red", "green", "blue", "black"];
 
-const changeResultColor = (value) => {
+const changeResultColor = (value: ColorArray) => {
   useColorStore().changeColor(props.type, value);
 };
 </script>
-<style lang="scss" scoped>
-.color-select {
-}
-</style>
+<style lang="scss" scoped></style>

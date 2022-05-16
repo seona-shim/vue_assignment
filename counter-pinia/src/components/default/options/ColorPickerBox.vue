@@ -4,7 +4,7 @@
       <h3>? > 100</h3>
       <element-select
         :value="resultColors.high"
-        @change="colorStore.changeColor('high', $event.target.value)"
+        @change="colorStore.changeColor('high', ($event.target as HTMLInputElement).value)"
         :options="colorArray"
       ></element-select>
     </label>
@@ -12,7 +12,7 @@
       <h3>0 {{ "<=" }} ? {{ "<=" }} 100</h3>
       <element-select
         :value="resultColors.middle"
-        @change="colorStore.changeColor('middle', $event.target.value)"
+        @change="colorStore.changeColor('middle', ($event.target as HTMLInputElement).value)"
         :options="colorArray"
       ></element-select>
     </label>
@@ -20,7 +20,7 @@
       <h3>? {{ "<" }} 0</h3>
       <element-select
         :value="resultColors.low"
-        @change="colorStore.changeColor('low', $event.target.value)"
+        @change="colorStore.changeColor('low', ($event.target as HTMLInputElement).value)"
         :options="colorArray"
       ></element-select>
     </label>
@@ -47,7 +47,7 @@ import { ref, watch } from "vue";
 import { useColorStore } from "@/store";
 import { Colors } from "@/types/color";
 import { ColorArray } from "@/types/color";
-const colorArray: ColorArray = ["black", "green", "red", "blue"];
+const colorArray: ColorArray[] = ["black", "green", "red", "blue"];
 const colorStore = useColorStore();
 
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });
@@ -71,8 +71,6 @@ watch(backgroundColor, (newValue, oldValue) => {
     h3 {
       text-align: left;
     }
-  }
-  select {
   }
 }
 </style>

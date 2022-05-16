@@ -12,7 +12,7 @@
       <q-popup-proxy cover transition-show="scale" transition-hide="scale">
         <q-color
           v-model="resultBg"
-          @update:model-value="colorStore.changeBackground"
+          @update:model-value="colorStore.changeBackground(resultBg)"
         />
       </q-popup-proxy>
     </q-icon>
@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "ResultBox",
 });
@@ -39,6 +39,8 @@ import { useCounterStore, useColorStore } from "@/store";
 import { getResultType } from "@/methods/getResultType";
 const counterStore = useCounterStore();
 const colorStore = useColorStore();
+
+const resultBg = ref<string>("#ffffff");
 </script>
 
 <style lang="scss" scoped>

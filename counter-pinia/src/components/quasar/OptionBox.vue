@@ -18,7 +18,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import ColorSelect from "./ColorSelect";
+import ColorSelect from "./ColorSelect.vue";
 export default defineComponent({
   name: "OptionBox",
   components: {
@@ -28,8 +28,8 @@ export default defineComponent({
 </script>
 <script setup lang="ts">
 import { ref } from "vue";
-import useChangeView from "@/methods/useChangeView.ts";
-import { uiComponent } from "@/router/routePath.ts";
+import useChangeView from "@/methods/useChangeView";
+import { uiComponent } from "@/router/routePath";
 
 const uiOption = ref("quasar");
 </script>

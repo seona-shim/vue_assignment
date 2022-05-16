@@ -1,5 +1,7 @@
+import { ColorType } from "@/types/color";
+
 export const getResultType = (result: number) => {
-  let type;
+  let type: ColorType;
 
   if (result < 0) {
     type = "low";

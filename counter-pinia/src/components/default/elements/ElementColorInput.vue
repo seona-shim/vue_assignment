@@ -2,7 +2,7 @@
   <input
     type="color"
     :value="props.value"
-    @input="emits('update:value', $event.target.value)"
+    @input="emits('update:value', ($event.target as HTMLTextAreaElement).value)"
     class="input-color"
   />
 </template>

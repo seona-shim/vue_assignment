@@ -26,7 +26,9 @@
               interface="action-sheet"
               v-model="resultColors.high"
               :style="{ color: resultColors.high }"
-              @ionChange="(e) => colorStore.changeColor('high', e.target.value)"
+              @ionChange="
+                () => colorStore.changeColor('high', resultColors.high)
+              "
             >
               <ion-select-option
                 v-for="(item, index) in colorArray"
@@ -45,7 +47,7 @@
               v-model="resultColors.middle"
               :style="{ color: resultColors.middle }"
               @ionChange="
-                (e) => colorStore.changeColor('middle', e.target.value)
+                () => colorStore.changeColor('middle', resultColors.middle)
               "
             >
               <ion-select-option
@@ -64,7 +66,7 @@
               interface="action-sheet"
               v-model="resultColors.low"
               :style="{ color: resultColors.low }"
-              @ionChange="(e) => colorStore.changeColor('low', e.target.value)"
+              @ionChange="() => colorStore.changeColor('low', resultColors.low)"
             >
               <ion-select-option
                 v-for="(item, index) in colorArray"
@@ -157,18 +159,18 @@ export default defineComponent({
 import { ref, watch, computed } from "vue";
 import { useCounterStore, useColorStore } from "@/store";
 import { Colors, ColorArray } from "@/types/color";
-import useChangeView from "@/methods/useChangeView.ts";
+import useChangeView from "@/methods/useChangeView";
 import { getResultType } from "@/methods/getResultType";
 
-import { uiComponent } from "@/router/routePath.ts";
+import { uiComponent } from "@/router/routePath";
 
 // framework option
-const changeUI = (e) => {
-  useChangeView(e.target.value);
+const changeUI = (e: Event) => {
+  useChangeView((e.target as HTMLInputElement).value);
 };
 
 // result color option
-const colorArray: ColorArray = ["black", "green", "red", "blue"];
+const colorArray: ColorArray[] = ["black", "green", "red", "blue"];
 const colorStore = useColorStore();
 const resultColors = ref<Colors>({ high: "red", middle: "black", low: "blue" });
 
