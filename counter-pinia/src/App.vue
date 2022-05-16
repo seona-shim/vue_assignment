@@ -1,12 +1,15 @@
 <template>
+  <option-box></option-box>
   <router-view />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import OptionBox from "@/components/OptionBox.vue";
 
 export default defineComponent({
   name: "App",
+  components: { OptionBox },
 });
 </script>
 
