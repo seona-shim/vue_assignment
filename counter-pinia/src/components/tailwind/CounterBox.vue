@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col items-center justify-center gap-[40px] shadow-lg"
+    class="flex-1 flex flex-col items-center justify-center gap-[40px] shadow-lg border-2 border-sky-300 rounded-[3%]"
   >
     <img alt="Vue logo" src="@/assets/logo.png" class="object-contain" />
     <input

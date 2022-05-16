@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col flex-nowrap items-center justify-center gap-[10px] overflow-auto shadow-lg"
+    class="flex-1 flex flex-col flex-nowrap items-center justify-center gap-[10px] shadow-lg overflow-y-scroll h-full border-2 border-sky-300 rounded-[3%]"
     :style="{ background: backgroundColor }"
   >
     <p v-for="(item, index) in counterStore.result" :key="index">

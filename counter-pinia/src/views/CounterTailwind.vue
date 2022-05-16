@@ -1,6 +1,6 @@
 <template>
   <main
-    class="grid h-screen grid-cols-2 grid-rows-[auto_1fr] gap-[20px] p-[20px]"
+    class="grid gap-[20px] grid-rows-1 grid-cols-2 overflow-hidden p-[20px] pt-0"
   >
     <counter-box />
     <result-box />
