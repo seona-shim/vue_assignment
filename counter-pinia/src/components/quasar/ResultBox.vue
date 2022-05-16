@@ -47,6 +47,10 @@ const resultBg = ref<string>("#ffffff");
 .result-box {
   overflow-y: auto;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .cursor-pointer {
     position: absolute;
