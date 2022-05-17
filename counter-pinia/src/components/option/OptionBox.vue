@@ -28,6 +28,12 @@
         v-model="resultColor.low"
         @change="colorStore.changeColor('low', resultColor.low)"
       ></option-selecter>
+      <option-selecter
+        label="MIX"
+        :options="resultOptions"
+        v-model="resultColor.mix"
+        @change="colorStore.changeColor('mix', resultColor.mix)"
+      ></option-selecter>
     </div>
   </section>
 </template>
@@ -56,6 +62,7 @@ const resultColor = reactive<Colors>({
   high: "red",
   middle: "black",
   low: "blue",
+  mix: "green",
 });
 const resultOptions: ColorArray[] = ["black", "blue", "green", "red"];
 const colorStore = useColorStore();

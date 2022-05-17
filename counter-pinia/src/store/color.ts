@@ -12,6 +12,7 @@ export const useColorStore = defineStore("color", {
       high: "red",
       middle: "black",
       low: "blue",
+      mix: "green",
     },
     background: "#ffffff",
   }),

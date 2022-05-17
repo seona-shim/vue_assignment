@@ -1,7 +1,7 @@
 <template>
   <section class="result-box" :style="{ background: backgroundColor }">
     <li v-for="(item, index) in counterStore.result" :key="index">
-      {{ item.math }}
+      <p :isDnd="item.isDnd">{{ item.math }}</p>
       <span :style="getResultColor(item.result)">{{ item.result }}</span>
     </li>
   </section>
@@ -25,6 +25,7 @@ const getResultColor = (result: number) => {
 };
 
 const backgroundColor = computed(() => colorStore.background);
+const dndColor = computed(() => colorStore.color.mix);
 </script>
 <style lang="scss" scoped>
 .result-box {
@@ -37,6 +38,9 @@ const backgroundColor = computed(() => colorStore.background);
   li {
     list-style: none;
     font-size: 18px;
+    p[isDnd="true"] {
+      color: v-bind(dndColor);
+    }
     span {
       font-weight: 900;
     }
