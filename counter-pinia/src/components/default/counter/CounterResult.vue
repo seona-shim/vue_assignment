@@ -31,13 +31,18 @@ const dndColor = computed(() => colorStore.color.mix);
 .result-box {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
   overflow-y: auto;
   li {
     list-style: none;
     font-size: 18px;
+    display: flex;
+    gap: 5px;
+    border-bottom: 1px solid lightblue;
+    padding: 20px 20px 0;
+    width: 100%;
+    justify-content: space-between;
     p[isDnd="true"] {
       color: v-bind(dndColor);
     }
