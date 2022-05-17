@@ -45,6 +45,7 @@ const changeCount = (type: string) => {
         </div>
       </label>
     </div>
+    <span class="line" />
     <counter-dnd></counter-dnd>
   </section>
 </template>
@@ -56,12 +57,23 @@ const changeCount = (type: string) => {
   align-items: center;
   justify-content: center;
   gap: 20px;
+  box-shadow: 3px 3px 1px rgb(168, 202, 214);
+  border: 1px solid rgb(168, 202, 214);
+  padding: 20px;
+  border-radius: 10px;
 }
 .counter-box {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto auto 1fr;
   padding: 50px 20px;
-  gap: 40px;
+  gap: 20px;
+}
+.line {
+  display: block;
+  height: 1px;
+  width: 50%;
+  margin: 0 auto;
+  background: lightblue;
 }
 .inner-box {
   .result {
@@ -73,22 +85,60 @@ const changeCount = (type: string) => {
 }
 .input-box {
   width: 80%;
+  input {
+    border: 1px solid lightblue;
+
+    &:focus {
+      border: 1px solid lightblue;
+      background: rgb(239, 251, 255);
+      outline: none;
+    }
+  }
 }
 .button-box {
   display: flex;
+  gap: 10px;
+  margin-left: 20px;
   button {
-    border: 1px solid black;
+    border: none;
     color: white;
     min-width: 50px;
+    border-radius: 10px;
+    background: none;
+
+    &:hover {
+      box-shadow: none;
+    }
   }
   .plus {
-    background-color: orangered;
+    border: 1px solid rgb(255, 159, 124);
+    color: rgb(255, 159, 124);
+    background: rgb(255, 246, 242);
+
+    &:hover {
+      background: rgb(255, 237, 231);
+      box-shadow: inset 2.5px 2.5px 3px rgb(255, 202, 183);
+    }
   }
   .minus {
-    background-color: royalblue;
+    border: 1px solid rgb(146, 173, 255);
+    color: rgb(146, 173, 255);
+    background: rgb(242, 245, 255);
+
+    &:hover {
+      background: rgb(232, 238, 255);
+      box-shadow: inset 2.5px 2.5px 3px rgb(187, 204, 255);
+    }
   }
   .random {
-    background-color: purple;
+    border: 1px solid rgb(255, 154, 255);
+    color: rgb(255, 154, 255);
+    background: rgb(255, 241, 255);
+
+    &:hover {
+      background: rgb(255, 225, 255);
+      box-shadow: inset 2.5px 2.5px 3px rgb(239, 176, 239);
+    }
   }
 }
 </style>
