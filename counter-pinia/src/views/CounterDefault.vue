@@ -21,7 +21,6 @@ export default defineComponent({
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  overflow: hidden;
   section {
     border: 2px solid lightblue;
     border-radius: 3%;
