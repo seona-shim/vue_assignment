@@ -18,7 +18,7 @@
       </template>
     </draggable>
     <button @click="addItem">Add</button>
-    <button>Run</button>
+    <button @click="runDndCounter">Run</button>
   </section>
 </template>
 
@@ -34,22 +34,14 @@ export default defineComponent({
 
 <script setup lang="ts">
 import MathSelector from "./MathSelector.vue";
+import { useCounterStore } from "@/store";
+
 const drag = ref(false);
 const items = ref<DndItem[]>([
   {
     math: "+",
     count: 0,
     id: 0,
-  },
-  {
-    math: "+",
-    count: 0,
-    id: 1,
-  },
-  {
-    math: "+",
-    count: 0,
-    id: 2,
   },
 ]);
 
@@ -68,6 +60,11 @@ const addItem = () => {
 
 const changeList = () => {
   console.log(items.value[0]);
+};
+
+const counterStore = useCounterStore();
+const runDndCounter = () => {
+  counterStore.addDndResult(items.value);
 };
 </script>
 

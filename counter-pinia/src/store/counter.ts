@@ -1,8 +1,10 @@
+import { DndItem } from "@/types/dnd";
 import { defineStore } from "pinia";
 
 export interface ResultItem {
   math: string;
   result: number;
+  isDnd: boolean;
 }
 
 export interface Initialstate {
@@ -20,6 +22,7 @@ const getResult = (
   return {
     math: String(prev) + mathType + String(next) + "=",
     result: result,
+    isDnd: false,
   };
 };
 
@@ -27,6 +30,22 @@ const getRandomValue = (min: number, max: number) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+const getDndResult = (prevCount: number, count: number, math: string) => {
+  let result = prevCount;
+  if (math == "+") {
+    result += count;
+  } else if (math == "-") {
+    result += count;
+  } else if (math == "/") {
+    result /= count;
+  } else if (math == "%") {
+    result %= count;
+  } else if (math == "*") {
+    result *= count;
+  }
+  return result;
 };
 
 export const useCounterStore = defineStore("counter", {
@@ -55,6 +74,20 @@ export const useCounterStore = defineStore("counter", {
       }
       const resultCount: number = this.count;
       this.result.push(getResult(prevCount, inputValue, resultCount, mathType));
+    },
+    addDndResult(items: DndItem[]) {
+      let resultCount = this.count;
+      let resultMath = String(resultCount);
+      items.forEach((i) => {
+        resultCount = getDndResult(resultCount, i.count, i.math);
+        resultMath += i.math + String(i.count);
+      });
+      this.count = resultCount;
+      this.result.push({
+        math: resultMath + "=",
+        result: resultCount,
+        isDnd: true,
+      });
     },
   },
 });
