@@ -34,6 +34,10 @@ const dndColor = computed(() => colorStore.color.mix);
   align-items: flex-start;
   justify-content: flex-start;
   overflow-y: auto;
+
+  border: 2px solid lightblue;
+  border-radius: 3%;
+  text-align: center;
   li {
     list-style: none;
     font-size: 18px;

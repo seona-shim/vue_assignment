@@ -4,7 +4,7 @@
     <select
       :value="modelValue"
       @change="emits('update:modelValue', ($event.target as HTMLSelectElement).value)"
-      :style="{ background: modelValue }"
+      :style="{ color: modelValue }"
     >
       <option v-for="(item, index) in props.options" :key="index">
         {{ item }}

@@ -1,39 +1,41 @@
 <template>
   <section class="option-box">
-    <div>
-      <option-selecter
-        label="UI framework"
-        :options="uiComponent"
-        v-model="uiFrameworks"
-        @change="useChangeView(uiFrameworks)"
-        class="ui-framework"
-      ></option-selecter>
-    </div>
-    <div>
-      <option-selecter
-        label="? > 100"
-        :options="resultOptions"
-        v-model="resultColor.high"
-        @change="colorStore.changeColor('high', resultColor.high)"
-      ></option-selecter>
-      <option-selecter
-        label="0 <= ? <= 100"
-        :options="resultOptions"
-        v-model="resultColor.middle"
-        @change="colorStore.changeColor('middle', resultColor.middle)"
-      ></option-selecter>
-      <option-selecter
-        label="? < 0"
-        :options="resultOptions"
-        v-model="resultColor.low"
-        @change="colorStore.changeColor('low', resultColor.low)"
-      ></option-selecter>
-      <option-selecter
-        label="MIX"
-        :options="resultOptions"
-        v-model="resultColor.mix"
-        @change="colorStore.changeColor('mix', resultColor.mix)"
-      ></option-selecter>
+    <div class="option-box-inner">
+      <div>
+        <option-selecter
+          label="UI framework"
+          :options="uiComponent"
+          v-model="uiFrameworks"
+          @change="useChangeView(uiFrameworks)"
+          class="ui-framework"
+        ></option-selecter>
+      </div>
+      <div>
+        <option-selecter
+          label="? > 100"
+          :options="resultOptions"
+          v-model="resultColor.high"
+          @change="colorStore.changeColor('high', resultColor.high)"
+        ></option-selecter>
+        <option-selecter
+          label="0 <= ? <= 100"
+          :options="resultOptions"
+          v-model="resultColor.middle"
+          @change="colorStore.changeColor('middle', resultColor.middle)"
+        ></option-selecter>
+        <option-selecter
+          label="? < 0"
+          :options="resultOptions"
+          v-model="resultColor.low"
+          @change="colorStore.changeColor('low', resultColor.low)"
+        ></option-selecter>
+        <option-selecter
+          label="MIX"
+          :options="resultOptions"
+          v-model="resultColor.mix"
+          @change="colorStore.changeColor('mix', resultColor.mix)"
+        ></option-selecter>
+      </div>
     </div>
   </section>
 </template>
@@ -69,10 +71,19 @@ const colorStore = useColorStore();
 </script>
 <style lang="scss" scoped>
 .option-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 10px 20px;
-  justify-content: center;
+  padding: 40px 40px 10px;
+
+  .option-box-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background: lightblue;
+  }
 }
 </style>

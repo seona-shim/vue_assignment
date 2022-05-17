@@ -17,14 +17,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .content {
-  padding: 0 20px 20px;
+  padding: 0 40px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  section {
-    border: 2px solid lightblue;
-    border-radius: 3%;
-    text-align: center;
-  }
+  gap: 40px;
 }
 </style>

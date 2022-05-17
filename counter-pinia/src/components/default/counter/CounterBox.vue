@@ -51,6 +51,11 @@ const changeCount = (type: string) => {
 </template>
 
 <style lang="scss" scoped>
+.counter-box {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 20px;
+}
 .inner-box {
   display: flex;
   flex-direction: column;
@@ -62,12 +67,7 @@ const changeCount = (type: string) => {
   padding: 20px;
   border-radius: 10px;
 }
-.counter-box {
-  display: grid;
-  grid-template-rows: auto auto 1fr;
-  padding: 50px 20px;
-  gap: 20px;
-}
+
 .line {
   display: block;
   height: 1px;
@@ -112,31 +112,31 @@ const changeCount = (type: string) => {
   }
   .plus {
     border: 1px solid rgb(255, 159, 124);
-    color: rgb(255, 159, 124);
-    background: rgb(255, 246, 242);
+    color: rgb(255, 134, 90);
+    background: rgb(255, 227, 192);
 
     &:hover {
-      background: rgb(255, 237, 231);
-      box-shadow: inset 2.5px 2.5px 3px rgb(255, 202, 183);
+      background: rgb(255, 215, 165);
+      box-shadow: inset 2.5px 2.5px 3px rgb(255, 189, 165);
     }
   }
   .minus {
     border: 1px solid rgb(146, 173, 255);
-    color: rgb(146, 173, 255);
-    background: rgb(242, 245, 255);
+    color: rgb(99, 138, 254);
+    background: rgb(218, 226, 255);
 
     &:hover {
-      background: rgb(232, 238, 255);
+      background: rgb(216, 226, 255);
       box-shadow: inset 2.5px 2.5px 3px rgb(187, 204, 255);
     }
   }
   .random {
     border: 1px solid rgb(255, 154, 255);
-    color: rgb(255, 154, 255);
-    background: rgb(255, 241, 255);
+    color: rgb(255, 126, 255);
+    background: rgb(255, 232, 255);
 
     &:hover {
-      background: rgb(255, 225, 255);
+      background: rgb(255, 212, 255);
       box-shadow: inset 2.5px 2.5px 3px rgb(239, 176, 239);
     }
   }
