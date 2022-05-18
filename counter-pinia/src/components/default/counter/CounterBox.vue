@@ -34,13 +34,13 @@ const changeCount = (type: string) => {
         </div>
         <div class="button-box">
           <element-button class="plus" @click="changeCount('plus')"
-            >+</element-button
+            ><p>+</p></element-button
           >
           <element-button class="minus" @click="changeCount('minus')"
-            >-</element-button
+            ><p>-</p></element-button
           >
           <element-button class="random" @click="changeCount('random')"
-            >Random</element-button
+            ><p>Random</p></element-button
           >
         </div>
       </label>
@@ -62,8 +62,8 @@ const changeCount = (type: string) => {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  box-shadow: 3px 3px 1px rgb(168, 202, 214);
-  border: 1px solid rgb(168, 202, 214);
+  box-shadow: 3px 3px 1px lightblue;
+  border: 1px solid lightblue;
   padding: 20px;
   border-radius: 10px;
 }
@@ -105,39 +105,47 @@ const changeCount = (type: string) => {
     min-width: 50px;
     border-radius: 10px;
     background: none;
+    p {
+      margin: 0;
+    }
 
     &:hover {
       box-shadow: none;
+      p {
+        margin-bottom: -2px;
+        margin-right: -2px;
+      }
     }
   }
   .plus {
-    border: 1px solid rgb(255, 159, 124);
-    color: rgb(255, 134, 90);
+    border: 1px solid rgb(224, 120, 82);
+    color: rgb(228, 97, 49);
     background: rgb(255, 227, 192);
 
     &:hover {
       background: rgb(255, 215, 165);
-      box-shadow: inset 2.5px 2.5px 3px rgb(255, 189, 165);
+      box-shadow: inset 2.5px 2.5px 3px rgb(241, 166, 139);
     }
   }
   .minus {
-    border: 1px solid rgb(146, 173, 255);
-    color: rgb(99, 138, 254);
+    border: 1px solid rgb(96, 128, 223);
+    color: rgb(68, 108, 227);
     background: rgb(218, 226, 255);
 
     &:hover {
       background: rgb(216, 226, 255);
-      box-shadow: inset 2.5px 2.5px 3px rgb(187, 204, 255);
+      box-shadow: inset 2.5px 2.5px 3px rgb(155, 175, 237);
     }
   }
   .random {
-    border: 1px solid rgb(255, 154, 255);
-    color: rgb(255, 126, 255);
+    border: 1px solid rgb(219, 97, 219);
+    color: rgb(198, 62, 198);
     background: rgb(255, 232, 255);
+    width: 100px;
 
     &:hover {
       background: rgb(255, 212, 255);
-      box-shadow: inset 2.5px 2.5px 3px rgb(239, 176, 239);
+      box-shadow: inset 2.5px 2.5px 3px rgb(219, 145, 219);
     }
   }
 }

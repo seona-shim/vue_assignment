@@ -36,8 +36,8 @@
       </template>
     </draggable>
     <div class="button-box">
-      <button @click="addItem">Add Card</button>
-      <button @click="runDndCounter">Run</button>
+      <button @click="addItem"><p>Add Card</p></button>
+      <button @click="runDndCounter"><p>Run</p></button>
     </div>
   </section>
 </template>
@@ -167,6 +167,7 @@ const changeMath = (math: string, count: number, index: number) => {
       background: none;
       cursor: pointer;
       opacity: 0.8;
+
       &:hover {
         opacity: 1;
       }
@@ -195,17 +196,23 @@ const changeMath = (math: string, count: number, index: number) => {
 .button-box {
   margin-top: 20px;
   button {
-    min-width: 100px;
+    min-width: 110px;
     min-height: 40px;
     border-radius: 5px;
     background: rgb(119, 230, 183);
     border: none;
     color: rgb(37, 123, 74);
     border: 1px solid rgb(77, 176, 120);
+    p {
+      margin: 0;
+    }
 
     &:hover {
       background: rgb(119, 230, 183);
       box-shadow: inset 2.5px 2.5px 3px rgb(77, 176, 120);
+      & > p {
+        transform: translate(2px, 2px);
+      }
     }
     &:first-child {
       margin-right: 10px;
