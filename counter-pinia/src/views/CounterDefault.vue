@@ -22,4 +22,8 @@ export default defineComponent({
   grid-template-columns: 1fr 1fr;
   gap: 40px;
 }
+.content:deep(input),
+.content:deep(select) {
+  border-radius: 5px;
+}
 </style>

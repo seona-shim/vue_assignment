@@ -85,5 +85,9 @@ const colorStore = useColorStore();
     box-sizing: border-box;
     background: lightblue;
   }
+  &:deep(select) {
+    border-radius: 5px;
+    font-weight: 600;
+  }
 }
 </style>
