@@ -17,7 +17,21 @@
               v-model="items[index].math"
               @change="changeMath(element.math, element.count, index)"
             />
-            <input type="number" v-model="element.count" />
+            <input
+              type="number"
+              v-model="element.count"
+              min="0"
+              max="10"
+              @change="
+                () => {
+                  element.count > 10
+                    ? (element.count = 10)
+                    : element.count < 0
+                    ? (element.count = 0)
+                    : null;
+                }
+              "
+            />
             <button @click="deleteItem(index)">
               <svg
                 width="24"

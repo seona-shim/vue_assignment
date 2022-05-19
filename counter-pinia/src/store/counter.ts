@@ -37,7 +37,7 @@ const getDndResult = (prevCount: number, count: number, math: string) => {
   if (math == "+") {
     result += count;
   } else if (math == "-") {
-    result += count;
+    result -= count;
   } else if (math == "/") {
     result /= count;
   } else if (math == "%") {
